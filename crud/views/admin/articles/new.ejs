@@ -9,10 +9,21 @@
             <h2>Novo Artigo</h2>
         </div>
         <div class="card-body">
-            <form  method="POST" action="/categories/save">
+            <form  method="POST" action="/articles/save">
+                <label>Titulo </label>
                 <input class="form-control" type="text"name="title" placeholder="Defina o Titulo do Artigo">
                 <br>
-                <textarea class="form-control" name="body" placeholder="Escreva seu Artigo"></textarea>
+                <label>Categoria </label>
+                <br>
+                <textarea class="form-control" id="article" name="body" placeholder="Escreva seu Artigo"></textarea>
+                <br>
+                <select name="category" class="form-control" id="">
+                
+                    <% categories.forEach((category) => {  %>
+
+                        <option value="<%= category.id %>"><%= category.title %></option>
+                    <% }) %>    
+                </select>
                 <br>
                 <button class="btn btn-success"> Cadastrar </button>
             </form>
@@ -20,3 +31,27 @@
     </div>
 </div>
 <%- include('../../partials/footer.ejs'); %>
+
+<script src="/tinymce/tinymce.min.js"> </script>
+<script> 
+    tinymce.init({
+                language: 'pt_BR',
+                selector: "#article",
+                plugins: [
+                    'advlist',
+                    'autolink',
+                    'link',
+                    'image',
+                    'lists',
+                    'preview',
+                    'searchreplace',
+                    'wordcount',
+                    'fullscreen',
+                    'insertdatetime',
+                    'media',
+                    'save',
+                    'table',
+                    'emoticons',
+                ]
+            })
+</script>
