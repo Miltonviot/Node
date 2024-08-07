@@ -17,11 +17,12 @@
                 <br>
                 <textarea class="form-control" id="article" name="body" placeholder="Escreva seu Artigo"></textarea>
                 <br>
-                <select name="category" class="form-control" id="">
+                <select name="category" class="form-control" >
                 
                     <% categories.forEach((category) => {  %>
 
                         <option value="<%= category.id %>"><%= category.title %></option>
+
                     <% }) %>    
                 </select>
                 <br>
